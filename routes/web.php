@@ -25,6 +25,6 @@ Route::get('/shop/{category?}/{item?}', [StaticControler::class, 'shop'])->name(
 
 Route::get('/store', [StaticControler::class, 'store'])->name('home.store');
 
-Route::resource('computers', ComputersController::class);  //OR:  Route::get('computers/{computer}', [ComputersController::class, 'XXX'])->name('computers.XXX');
+Route::resource('computers', ComputersController::class);  //OR: (STATIC) Route::get('computers/{computer}', [ComputersController::class, 'XXX'])->name('computers.XXX');
 
 

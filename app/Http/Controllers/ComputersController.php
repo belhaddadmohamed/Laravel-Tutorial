@@ -53,16 +53,15 @@ class ComputersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $computer_id)
     {
-        $computers = self::getData();
-        $index = array_search($id, array_column($computers, 'id'));
+        $index = Computer::find($computer_id);
 
         if($index === false){
             abort(404);
         }
 
-        return view('computers.single_computer', ['computer'=>$computers[$index]]);
+        return view('computers.show_computer', ['computer' => $index]);
     }
 
     /**
