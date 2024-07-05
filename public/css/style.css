@@ -765,3 +765,19 @@ img, video {
         padding: 2rem
     }
 }
+
+.edit-btn{
+    color: lightblue;
+    text-decoration: underline;
+    font-size: .8rem;
+}
+
+.delete-btn{
+    color: red;
+    border: 1px solid red;
+    border-radius: 30%;
+    text-decoration: underline;
+    font-size: .8rem;
+    padding: 10px;
+    margin-top: 10px;
+}

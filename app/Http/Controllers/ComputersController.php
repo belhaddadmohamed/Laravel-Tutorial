@@ -40,10 +40,16 @@ class ComputersController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'origin' => 'required',
+            'price' => ['required', 'integer'],
+        ]);
+
         $computer = new Computer();
-        $computer->name = $request->input('name');
-        $computer->origin = $request->input('origin');
-        $computer->price = $request->input('price');
+        $computer->name = strip_tags($request->input('name'));
+        $computer->origin = strip_tags($request->input('origin'));
+        $computer->price = strip_tags($request->input('price'));
 
         $computer->save();
 
@@ -55,36 +61,54 @@ class ComputersController extends Controller
      */
     public function show(string $computer_id)
     {
-        $index = Computer::find($computer_id);
+        $computer = Computer::findOrFail($computer_id);
 
-        if($index === false){
-            abort(404);
-        }
+        // findOrFail
+        // if($computer === false){
+        //     abort(404);
+        // }
 
-        return view('computers.show_computer', ['computer' => $index]);
+        return view('computers.show_computer', ['computer' => $computer]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $computer_id)
     {
-        //
+        $computer = Computer::findOrFail($computer_id);
+
+        return view('computers.edit_computer', ['computer' => $computer]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $computer_id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'origin' => 'required',
+            'price' => ['required', 'integer'],
+        ]);
+
+        $computer = Computer::findOrFail($computer_id);
+        $computer->name = strip_tags($request->input('name'));
+        $computer->origin = strip_tags($request->input('origin'));
+        $computer->price = strip_tags($request->input('price'));
+
+        $computer->save();
+
+        return redirect()->route('computers.show', $computer);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $computer_id)
     {
-        //
+        $computer = Computer::findOrFail($computer_id);
+        $computer->delete();
+        return redirect()->route('computer.index');
     }
 }

@@ -16,16 +16,19 @@
     <body class="antialiased">
         
         <nav class="bg-white">
+            <!-- Shop -->
             <a href="{{ route('home.index') }}" class="lg:p-8">Index</a>
             <a href="{{ route('home.about') }}" class="lg:p-8">About</a>
             <a href="{{ route('home.portfolio') }}" class="lg:p-8">Portfolio</a>
             <a href="{{ route('home.shop') }}" class="lg:p-8">Store</a>
             <a href="{{ route('home.store') }}" class="lg:p-8">Shop</a>
+            <!-- Computer -->
             <a href="{{ route('computers.index') }}" class="lg:p-8">Computers</a>
+            <a href="{{ route('computers.create') }}" class="lg:p-8">Create Computer</a>
         </nav>
 
 
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">  
+        <div style="flex-wrap: wrap;" class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">  
 
             @yield('content')
             

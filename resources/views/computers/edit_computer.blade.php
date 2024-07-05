@@ -11,10 +11,12 @@
         </div>
 
         <div class="form_wrapper">
-            <form action="{{ route('computers.store') }}" method="post">
+            <form action="{{ route('computers.update', ['computer' => $computer->id]) }}" method="post">
                 @csrf
+                @method('put')
+
                 <label for="name">Computer name:</label>
-                <input id="name" name="name" type="text" value="{{old('name')}}"/>
+                <input id="name" name="name" type="text" value="{{$computer->name}}"/>
                 @error('name')
                     <div class="form-error">
                         {{$message}}
@@ -22,7 +24,7 @@
                 @enderror
                 
                 <label for="origin">Computer origin:</label>
-                <input id="origin" name="origin" type="text" value="{{old('origin')}}"/>
+                <input id="origin" name="origin" type="text" value="{{$computer->origin}}"/>
                 @error('origin')
                     <div class="form-error">
                         {{$message}}
@@ -30,7 +32,7 @@
                 @enderror
                 
                 <label for="price">Computer price:</label>
-                <input id="price" name="price" type="text" value="{{old('price')}}"/>
+                <input id="price" name="price" type="text" value="{{$computer->price}}"/>
                 @error('price')
                     <div class="form-error">
                         {{$message}}
