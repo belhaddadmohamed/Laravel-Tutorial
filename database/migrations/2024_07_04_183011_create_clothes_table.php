@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('cid');
             $table->string('name');
             $table->string('size');
+            $table->integer('age');
             $table->timestamps();
         });
     }
