@@ -109,6 +109,6 @@ class ComputersController extends Controller
     {
         $computer = Computer::findOrFail($computer_id);
         $computer->delete();
-        return redirect()->route('computer.index');
+        return redirect()->route('computers.index');
     }
 }

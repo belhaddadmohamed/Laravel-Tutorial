@@ -35,10 +35,15 @@
                             </svg>
                         </a>
                     </div>
+                    <form action="{{ route('computers.destroy', ['computer' => $computer->id]) }}"  method="post">
+                        @csrf
+                        @method('delete')
+        
+                        <input class="delete-btn max-w-7xl mx-auto p-6 lg:p-8" type="submit" value="Delete"/>
+                    </form>
                 </div>
             </div>
-            
-            <a class="delete-btn max-w-7xl mx-auto p-6 lg:p-8" href="{{ route('computers.destroy', ['computer' => $computer->id]) }}">Delete</a>
+
         @endforeach
 
     @else
